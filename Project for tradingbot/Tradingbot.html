@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EURJPY Buy/Sell Signal</title>
+</head>
+<body>
+<!-- TradingView Pine Editor code -->
+<script type="text/pine">
+//@version=4
+study("EURJPY Buy/Sell Signal")
+
+// Define moving averages
+ma21 = sma(close, 21)
+ma55 = sma(close, 55)
+
+// Plot moving averages on chart
+plot(ma21, color=orange)
+plot(ma55, color=red)
+
+// Buy and sell signals
+buy = crossover(ma21, ma55)
+sell = crossunder(ma21, ma55)
+
+// Add buy and sell signals to chart
+plotshape(buy, color=green, style=shape.triangleup, location=location.belowbar)
+plotshape(sell, color=red, style=shape.triangledown, location=location.abovebar)
+
+// Set timeframe to 15 minutes
+timeframe(in, 15)
+
+</script>
+</body>
+</html>
